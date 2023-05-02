@@ -101,7 +101,9 @@ function App() {
   return (
     <>
       <div className="wrapper w-full h-screen flex items-center">
-        <div className="container h-max max-w-[500px] mx-auto bg-transparent flex flex-col justify-center items-center p-4 my-5">
+        <div className="container h-max 
+        max-w-[250px] min-[320px]:max-w-[360px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px] xl:max-w-[600px] 
+        mx-auto bg-transparent flex flex-col justify-center items-center p-4 my-5">
 
           <div className="heading flex flex-col items-center my-3">
             <h1 className=' font-poppins text-[30px] font-bold text-yellow-50 tracking-[2px]'>TODO APP</h1>
@@ -113,37 +115,43 @@ function App() {
                    placeholder='Notes...'
                    value={inputData}
                    onChange={changeHandler}
-                   className=' relative w-full h-[35px] bg-[#ffffff70] border-gray-200 outline-0 border font-poppins pl-2 pr-6 rounded-md text-[#020211ab] placeholder:text-[#222255ab]'
-            />
+                   className=' relative w-full h-[35px] bg-[#ffffff70] border-gray-200 outline-0 border 
+                   font-poppins pl-2 pr-6 rounded-md text-[13px] md:text-[15px] lg:text-[18px] xl:text-[20px] 
+                  text-[#020211ab] placeholder:text-[#222255ab]'
+            />  
 
             {/* when we click edit  button in the list Item we TOGGLE the button from ADD BUTTON to EDIT BUTTON in the input field */}
             {
               toggleButton ? 
               (<FaPenSquare 
-              className=' absolute flex w-[30px] right-[75px] top-[117px] cursor-pointer text-[#222255cb]'
+              className=' absolute flex w-[30px] 
+              right-[50px] sm:right-[65px] md:right-[70px] lg:right-[80px] xl:right-[90px] 
+              top-[117px] cursor-pointer text-[#222255cb]'
               onClick={addItemHandler}
             />) : 
             (<FaPlus
-            className=' absolute flex w-[30px] right-[75px] top-[117px] cursor-pointer text-[#222255cb]'
+            className=' absolute flex w-[30px] 
+            right-[55px] sm:right-[65px] md:right-[70px] lg:right-[80px] xl:right-[90px] 
+            top-[117px] cursor-pointer text-[#222255cb]'
             onClick={addItemHandler} />)
             }
             
           </div>
 
           {/* Show our Items */}
-          <div className="show-items w-[75%] flex flex-col my-5 justify-center">
+          <div className="show-items w-[75%] flex flex-col my-2 sm:my-5 justify-center">
           {
             addItem.map((currnetData)=> {
                 return(
-                  <div className="each-item w-full bg-[#e6ee764d] flex justify-between p-[10px] rounded-md items-center mb-4 " key={currnetData.id}>
+                  <div className="each-item w-full bg-[#e6ee764d] flex justify-between p-[10px] rounded-md items-center mb-2 md:mb-4 " key={currnetData.id}>
 
-                  <h2 className='font-poppins text-[17px] font-[400] text-[#202020] overflow-hidden break-words'>{currnetData.name}</h2>
+                  <h2 className='font-poppins text-[12px] md:text-[17px] font-[400] text-[#202020] overflow-hidden break-words'>{currnetData.name}</h2>
 
                   <div className="item-buttons flex gap-2">
-                  <FaPenSquare fontSize={22} className='hover:text-[#32ff8e] cursor-pointer' 
+                  <FaPenSquare fontSize={15} className='hover:text-[#32ff8e] md:text-[22px] cursor-pointer' 
                                onClick={() => editHandler(currnetData.id)}
                   />
-                  <FaTrash fontSize={20} className='hover:text-[#ff4141] cursor-pointer'
+                  <FaTrash fontSize={13} className='hover:text-[#ff4141] md:text-[20px] cursor-pointer'
                            onClick={() => deleteHandler(currnetData.id)}
                   />
                   </div>
